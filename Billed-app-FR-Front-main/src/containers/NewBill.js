@@ -23,14 +23,25 @@ export default class NewBill {
 
     // Vérifier si un fichier est sélectionné
     if (!file) {
-      console.error('Aucun fichier sélectionné.');
+      
       return;
     }
 
     // Vérifier l'extension du fichier
+    // Vérifier l'extension du fichier
+    // const isPicture = (mimeType)=> ['image/jpg', 'image/jpeg', 'image/png'];
+    // const fileExtension = file.name.split('.').pop().toLowerCase();
+
+    // if (!isPicture(file.type)) {
+    //   const ErrorElement=this.document.createElement(div);
+    //   ErrorElement.textContent()="Extension de fichier non autorisée. Veuillez sélectionner un fichier avec une extension valide"
+    //   ErrorElement.style.color="red";
+    //   fileInput.parentNode.appendChild(ErrorElement);
+    //   fileInput.value='';
+    //   return;
     const allowedExtensions = ['jpg', 'jpeg', 'png'];
     const fileExtension = file.name.split('.').pop().toLowerCase();
-
+    // vérifie si l'extension du fichier est parmi les extensions autorisées (jpg, jpeg, png)
     if (!allowedExtensions.includes(fileExtension)) {
       alert('Extension de fichier non autorisée. Veuillez sélectionner un fichier avec une extension valide (jpg, jpeg, png).');
       console.error('Extension de fichier non autorisée. Veuillez sélectionner un fichier avec une extension valide (jpg, jpeg, png).');
@@ -44,7 +55,7 @@ export default class NewBill {
 
     formData.append('file', file);
     formData.append('email', email);
-
+//Envoi du fichier au serveur:
     this.store
       .bills()
       .create({
