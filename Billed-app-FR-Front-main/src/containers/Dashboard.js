@@ -98,7 +98,6 @@ export default class {
       this.counter ++
     } else {
       $(`#open-bill${bill.id}`).css({ background: '#0D5AE5' })
-
       $('.dashboard-right-container div').html(`
         <div id="big-billed-icon" data-testid="big-billed-icon"> ${BigBilledIcon} </div>
       `)
@@ -144,9 +143,16 @@ export default class {
         .html("")
       this.counter ++
     }
+    
 
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      // code que j'ai ajouté
+      $(`#open-bill${bill.id}`).off('click');
+      $(`#open-bill${bill.id}`).click((e) => {
+      console.log(bill.id,'Event listener')
+      this.handleEditTicket(e, bill, bills)
+
+    })
     })
 
     return bills
