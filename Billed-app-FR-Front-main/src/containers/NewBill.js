@@ -44,7 +44,6 @@ export default class NewBill {
     // vérifie si l'extension du fichier est parmi les extensions autorisées (jpg, jpeg, png)
     if (!allowedExtensions.includes(fileExtension)) {
       alert('Extension de fichier non autorisée. Veuillez sélectionner un fichier avec une extension valide (jpg, jpeg, png).');
-      console.error('Extension de fichier non autorisée. Veuillez sélectionner un fichier avec une extension valide (jpg, jpeg, png).');
       return;
     }
 
